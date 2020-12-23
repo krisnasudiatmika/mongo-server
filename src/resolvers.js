@@ -1,15 +1,61 @@
-import { Cat } from "./models/Cat";
+import {
+  Customer
+} from "./models/Customer";
 
 export const resolvers = {
   Query: {
     hello: () => "hi",
-    cats: () => Cat.find()
+    customers: () => Customer.find()
   },
   Mutation: {
-    createCat: async (_, { name }) => {
-      const kitty = new Cat({ name });
-      await kitty.save();
-      return kitty;
+    createCustomer: async (_, {
+      name,
+      contact,
+      email,
+      phone,
+      position,
+      cell,
+      fax,
+      website,
+      language,
+      paymentname,
+      paymentposition,
+      paymentemail,
+      paymentphone,
+      paymentsupplier,
+      paymentdiscount,
+      companyname,
+      address,
+      city,
+      state,
+      country,
+      postal
+    }) => {
+      const person = new Customer({
+        name,
+        contact,
+        email,
+        phone,
+        position,
+        cell,
+        fax,
+        website,
+        language,
+        paymentname,
+        paymentposition,
+        paymentemail,
+        paymentphone,
+        paymentsupplier,
+        paymentdiscount,
+        companyname,
+        address,
+        city,
+        state,
+        country,
+        postal
+      });
+      await person.save();
+      return person;
     }
   }
 };
